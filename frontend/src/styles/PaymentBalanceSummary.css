@@ -93,6 +93,19 @@
   border: 1px solid var(--border-default, #E5E7EB);
   color: #374151;
   flex-shrink: 0;
+  transition: all 0.18s ease;
+}
+
+.balance-icon-circle.icon-wallet {
+  background-color: rgba(0, 113, 227, 0.08);
+  border-color: rgba(0, 113, 227, 0.2);
+  color: var(--apple-blue, #0071E3);
+}
+
+.balance-icon-circle.icon-building {
+  background-color: rgba(52, 199, 89, 0.1);
+  border-color: rgba(52, 199, 89, 0.25);
+  color: #248A3D;
 }
 
 .balance-card-title {

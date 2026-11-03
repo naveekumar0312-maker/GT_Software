@@ -153,6 +153,43 @@
   background-color: var(--danger-bg, #FEF2F2);
 }
 
+.payment-amount-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.payment-amount-currency {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 600;
+  color: var(--text-muted, #86868B);
+  pointer-events: none;
+  font-size: 13.5px;
+}
+
+.payment-amount-input {
+  padding-left: 28px !important;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.payment-sno-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background-color: #F5F5F7;
+  color: #1D1D1F;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
 .btn-remove-payment-row {
   width: 34px;
   height: 34px;

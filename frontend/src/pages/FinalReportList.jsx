@@ -380,7 +380,7 @@ const FinalReportList = () => {
                 <div className="pagination-controls">
                   <button
                     type="button"
-                    className="pagination-btn"
+                    className="page-btn"
                     disabled={currentPage === 1}
                     onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                   >
@@ -390,7 +390,7 @@ const FinalReportList = () => {
                     <button
                       key={pageNum}
                       type="button"
-                      className={`pagination-btn ${pageNum === currentPage ? 'active' : ''}`}
+                      className={`page-btn ${pageNum === currentPage ? 'active' : ''}`}
                       onClick={() => setCurrentPage(pageNum)}
                     >
                       {pageNum}
@@ -398,7 +398,7 @@ const FinalReportList = () => {
                   ))}
                   <button
                     type="button"
-                    className="pagination-btn"
+                    className="page-btn"
                     disabled={currentPage === totalPages}
                     onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                   >

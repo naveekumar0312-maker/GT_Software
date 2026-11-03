@@ -250,7 +250,7 @@ const BookingServicesDMC = ({
                     <td style={{ textAlign: 'center' }}>
                       <button
                         type="button"
-                        className="btn-remove-dmc"
+                        className="btn-remove-row btn-remove-dmc"
                         title="Remove DMC Service"
                         aria-label={`Remove DMC Service row ${serialNumber}`}
                         onClick={() => handleRemoveRow(row.id)}

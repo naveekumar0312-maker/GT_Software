@@ -231,7 +231,7 @@ const PaymentCollection = ({
                       <td style={{ textAlign: 'center' }}>
                         <button
                           type="button"
-                          className="btn-remove-payment"
+                          className="btn-remove-payment-row btn-remove-payment"
                           onClick={() => handleRemoveRow(index)}
                           title="Remove Payment Row"
                           id={`btn-remove-payment-${index}`}

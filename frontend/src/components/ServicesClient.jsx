@@ -256,7 +256,7 @@ const ServicesClient = ({
                     <td style={{ textAlign: 'center' }}>
                       <button
                         type="button"
-                        className="btn-remove-service"
+                        className="btn-remove-row btn-remove-service"
                         title="Remove Service"
                         aria-label={`Remove Service row ${serialBadgeText}`}
                         onClick={() => handleRemoveRow(row.id)}

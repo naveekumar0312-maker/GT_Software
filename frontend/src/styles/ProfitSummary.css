@@ -74,9 +74,18 @@
   letter-spacing: -0.02em;
 }
 
-.profit-metric-desc {
+.profit-metric-desc,
+.profit-metric-subtext {
   font-size: 12px;
   color: var(--text-muted);
+}
+
+.profit-metric-card.card-cost:hover {
+  border-color: #9CA3AF;
+}
+
+.profit-metric-card.card-expense:hover {
+  border-color: #9CA3AF;
 }
 
 /* Profit Metric Dynamic State */

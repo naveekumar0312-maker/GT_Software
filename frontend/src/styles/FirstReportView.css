@@ -84,24 +84,28 @@
   white-space: nowrap;
 }
 
-.btn-view-action.btn-back {
+.btn-view-action.btn-back,
+.btn-view-action.btn-view-back {
   background: var(--surface, #FFFFFF);
   border: 1px solid var(--border-default, #E5E7EB);
   color: var(--text-primary, #1F2937);
 }
 
-.btn-view-action.btn-back:hover {
+.btn-view-action.btn-back:hover,
+.btn-view-action.btn-view-back:hover {
   background: var(--surface-soft, #F3F4F6);
   border-color: #D1D5DB;
 }
 
-.btn-view-action.btn-edit {
+.btn-view-action.btn-edit,
+.btn-view-action.btn-view-edit {
   background: var(--surface, #FFFFFF);
   border: 1px solid var(--border-default, #E5E7EB);
   color: var(--text-primary, #1F2937);
 }
 
-.btn-view-action.btn-edit:hover {
+.btn-view-action.btn-edit:hover,
+.btn-view-action.btn-view-edit:hover {
   background: var(--surface-soft, #F3F4F6);
   border-color: #9CA3AF;
 }

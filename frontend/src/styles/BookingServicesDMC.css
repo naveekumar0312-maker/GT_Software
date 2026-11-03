@@ -168,6 +168,26 @@
   background-color: var(--danger-bg, #FEF2F2);
 }
 
+.sno-badge,
+.srv-sno-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background-color: #F5F5F7;
+  color: #1D1D1F;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.dmc-input-readonly {
+  background-color: #F5F5F7 !important;
+  color: #6E6E73 !important;
+  cursor: default;
+}
+
 .btn-remove-row {
   width: 34px;
   height: 34px;

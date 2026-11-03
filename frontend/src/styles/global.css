@@ -146,7 +146,115 @@ button, input, optgroup, select, textarea {
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* App Shell Structure */
+/* Utility Alignment & Typography Helpers */
+.text-center {
+  text-align: center !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.font-bold {
+  font-weight: 700 !important;
+}
+
+.font-semibold {
+  font-weight: 600 !important;
+}
+
+/* Base button and cancel helper */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: var(--radius-button);
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.btn-cancel {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.btn-cancel:hover:not(:disabled) {
+  background-color: var(--surface-soft);
+  border-color: #D1D5DB;
+}
+
+/* Alert Box System-wide Fallback */
+.alert-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.alert-box.alert-success {
+  background-color: var(--success-bg);
+  border: 1px solid var(--success-border);
+  color: var(--success-color);
+}
+
+.alert-box.alert-danger {
+  background-color: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  color: var(--danger-color);
+}
+
+.alert-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.alert-title {
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.alert-desc {
+  font-size: 13px;
+  opacity: 0.95;
+}
+
+/* Table Header Width Helpers */
+.th-sno, .sno-cell, .srv-sno-cell {
+  width: 44px;
+  text-align: center !important;
+}
+
+.th-date {
+  width: 140px;
+}
+
+.th-mode {
+  width: 130px;
+}
+
+.th-amount {
+  width: 150px;
+  text-align: right !important;
+}
+
+.th-actions {
+  width: 50px;
+  text-align: center !important;
+}
+
+/* Spinner Animation */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
 .app-container {
   display: flex;
   min-height: 100vh;

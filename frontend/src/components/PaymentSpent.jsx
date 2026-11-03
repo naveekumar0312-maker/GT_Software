@@ -250,7 +250,7 @@ const PaymentSpent = ({
                       <td style={{ textAlign: 'center' }}>
                         <button
                           type="button"
-                          className="btn-remove-spent"
+                          className="btn-remove-spent-row btn-remove-spent"
                           onClick={() => handleRemoveRow(index)}
                           title="Remove Payment Spent Row"
                           id={`btn-remove-spent-${index}`}
