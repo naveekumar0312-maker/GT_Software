@@ -103,11 +103,12 @@
   --font-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* Base Reset & Box Sizing */
+/* Base Reset & Box Sizing - Force Apple Typography System-wide */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: inherit;
 }
 
 html, body, #root {
@@ -116,10 +117,14 @@ html, body, #root {
   margin: 0;
   padding: 0;
   background-color: var(--app-bg);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   background-color: var(--app-bg);
   color: var(--text-primary);
   line-height: 1.5;
@@ -128,13 +133,17 @@ body {
   overflow-x: hidden;
 }
 
-/* Headings */
+/* Headings with Apple Display Typography */
 h1, h2, h3, h4, h5, h6,
 .section-title, .section-heading, .page-title, .page-main-title, .report-view-title {
-  font-family: var(--font-heading);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: var(--text-primary);
-  letter-spacing: -0.015em;
+  letter-spacing: -0.022em;
   font-weight: 700;
+}
+
+button, input, optgroup, select, textarea {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* App Shell Structure */
