@@ -1,11 +1,4 @@
-/* Pure Minimal Corporate Design Theme
- * Background: #F8F9FB
- * Card: #FFFFFF
- * Primary Text: #1F2937
- * Secondary Text: #6B7280
- * Border: #E5E7EB
- * Primary Button: #374151
- */
+/* Apple HIG Minimal Aesthetics Login Page */
 
 .login-page-container {
   min-height: 100vh;
@@ -13,21 +6,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F8F9FB;
+  background-color: #F5F5F7;
   padding: 24px 16px;
   box-sizing: border-box;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", sans-serif;
 }
 
 .login-card {
   width: 100%;
   max-width: 420px;
   background: #FFFFFF;
-  border: 1px solid #E5E7EB;
-  border-radius: 12px;
-  padding: 40px 36px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  padding: 44px 38px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03);
   box-sizing: border-box;
+  animation: appleLoginCardPop 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes appleLoginCardPop {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .login-header {
@@ -39,33 +44,34 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  background-color: #1F2937;
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, #1D1D1F 0%, #3A3A3C 100%);
   color: #FFFFFF;
-  border-radius: 10px;
+  border-radius: 14px;
   margin-bottom: 18px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .login-badge-text {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
   font-weight: 800;
-  font-size: 16px;
+  font-size: 17px;
   letter-spacing: 0.05em;
 }
 
 .login-title {
-  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
   font-size: 24px;
   font-weight: 700;
-  color: #1F2937;
+  color: #1D1D1F;
   margin: 0 0 6px 0;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .login-subtitle {
   font-size: 14px;
-  color: #6B7280;
+  color: #6E6E73;
   margin: 0;
   line-height: 1.5;
 }

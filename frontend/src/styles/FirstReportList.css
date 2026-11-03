@@ -48,31 +48,31 @@
   margin: 0;
 }
 
-/* Charcoal Primary Add Report Button */
+/* Apple System Blue Primary Add Report Button */
 .btn-primary-add {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: var(--primary, #374151);
+  background-color: var(--apple-blue, #0071E3);
   color: #FFFFFF;
-  height: 44px;
-  padding: 0 20px;
+  height: 40px;
+  padding: 0 18px;
   border-radius: var(--radius-pill, 9999px);
   font-size: 13.5px;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
-  border: 1px solid #374151;
+  border: 1px solid var(--apple-blue, #0071E3);
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: all 0.16s ease;
+  box-shadow: 0 2px 6px rgba(0, 113, 227, 0.25);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
   box-sizing: border-box;
 }
 
 .btn-primary-add:hover {
-  background-color: var(--primary-hover, #1F2937);
+  background-color: var(--apple-blue-hover, #0077ED);
   transform: translateY(-1px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.35);
 }
 
 /* Flash Messages */

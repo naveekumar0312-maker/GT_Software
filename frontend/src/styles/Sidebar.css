@@ -1,6 +1,6 @@
 /* ========================================================= */
-/* Aspire Tour ERP – Pure Light Theme Sidebar Styles          */
-/* Pure White #FFFFFF background, Neutral active & hover      */
+/* GT Software CRM – Apple HIG Frosted Glass Sidebar Styles   */
+/* Pure Refined Translucent Acrylic with Native Polish       */
 /* ========================================================= */
 
 .app-sidebar {
@@ -9,14 +9,16 @@
   left: 0;
   bottom: 0;
   width: var(--sidebar-width);
-  background-color: var(--sidebar-bg, #FFFFFF);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
   color: var(--text-primary);
   display: flex;
   flex-direction: column;
   z-index: 1000;
   border-right: 1px solid var(--border);
-  box-shadow: none;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 1px 0 0 rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Brand header */
@@ -25,7 +27,7 @@
   align-items: center;
   gap: 12px;
   padding: 24px 20px 20px 20px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .brand-icon-wrapper {
@@ -34,16 +36,16 @@
   justify-content: center;
   width: 38px;
   height: 38px;
-  border-radius: 9px;
-  background: #273142;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1D1D1F 0%, #3A3A3C 100%);
   color: #FFFFFF;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   flex-shrink: 0;
 }
 
 .brand-logo-text {
   font-size: 13px;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: 0.5px;
   color: #FFFFFF;
   line-height: 1;
@@ -56,10 +58,10 @@
 }
 
 .brand-title {
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 0.2px;
-  color: var(--text-primary, #1F2937);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
   margin: 0;
   line-height: 1.25;
   white-space: nowrap;
@@ -76,7 +78,7 @@
 /* Nav Menu */
 .sidebar-nav {
   flex: 1;
-  padding: 22px 14px;
+  padding: 20px 12px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -84,10 +86,10 @@
 }
 
 .nav-group-label {
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.9px;
-  color: var(--text-muted, #9CA3AF);
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
   text-transform: uppercase;
   padding: 0 12px;
   margin-bottom: 8px;
@@ -96,42 +98,46 @@
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  border-radius: 8px;
-  color: var(--text-secondary, #6B7280);
+  gap: 11px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  color: #515154;
   text-decoration: none;
   font-size: 13.5px;
-  font-weight: 600;
-  transition: all 0.16s ease;
+  font-weight: 500;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
 .nav-item:hover {
-  background-color: var(--hover-bg, #F3F4F6);
-  color: var(--text-primary, #1F2937);
+  background-color: rgba(0, 0, 0, 0.04);
+  color: #1D1D1F;
 }
 
-/* Pure Light Active Navigation Item: #E9EDF2 with dark text */
+/* Apple System Blue Active Nav Item Pill */
 .nav-item.active {
-  background-color: #E9EDF2;
-  color: #111827;
-  font-weight: 700;
-  box-shadow: none;
+  background-color: var(--apple-blue);
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.28);
 }
 
 .nav-item.active .nav-icon {
-  color: #111827;
+  color: #FFFFFF;
 }
 
 .nav-icon {
   flex-shrink: 0;
-  color: #6B7280;
-  transition: color 0.16s ease;
+  color: #6E6E73;
+  transition: color 0.18s ease;
 }
 
 .nav-item:hover .nav-icon {
-  color: #1F2937;
+  color: #1D1D1F;
+}
+
+.nav-item.active:hover .nav-icon {
+  color: #FFFFFF;
 }
 
 .nav-text {
@@ -144,15 +150,20 @@
   text-transform: uppercase;
   padding: 2px 7px;
   border-radius: 9999px;
-  background-color: var(--secondary-bg, #F3F4F6);
-  color: var(--text-primary, #1F2937);
+  background-color: rgba(0, 0, 0, 0.06);
+  color: var(--text-primary);
+}
+
+.nav-item.active .nav-badge {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
 }
 
 /* Sidebar User Info and Logout Section */
 .sidebar-user-footer {
   padding: 16px 14px;
-  border-top: 1px solid var(--border);
-  background: #FFFFFF;
+  border-top: 1px solid var(--border-subtle);
+  background: transparent;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -168,9 +179,9 @@
 .sidebar-user-avatar {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
-  background-color: #F3F4F6;
-  color: #374151;
+  border-radius: 9px;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #1D1D1F;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -185,8 +196,8 @@
 
 .sidebar-username {
   font-size: 13.5px;
-  font-weight: 700;
-  color: #1F2937;
+  font-weight: 600;
+  color: #1D1D1F;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -194,7 +205,7 @@
 
 .sidebar-role {
   font-size: 11px;
-  color: #6B7280;
+  color: #86868B;
   font-weight: 500;
 }
 
@@ -204,20 +215,20 @@
   gap: 10px;
   width: 100%;
   padding: 9px 12px;
-  background-color: #F9FAFB;
-  border: 1px solid #E5E7EB;
-  border-radius: 8px;
-  color: #4B5563;
+  background-color: rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: 9px;
+  color: #515154;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.18s ease;
 }
 
 .sidebar-logout-btn:hover:not(:disabled) {
-  background-color: #FEE2E2;
-  border-color: #FCA5A5;
-  color: #DC2626;
+  background-color: #FFF0EF;
+  border-color: #FFCDCA;
+  color: #D70015;
 }
 
 .sidebar-logout-btn .logout-icon {

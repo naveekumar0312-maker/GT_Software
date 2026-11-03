@@ -28,17 +28,18 @@
 }
 
 /* -------------------------------------------------------------
-   1. TOP DASHBOARD HEADER & CONTROLS
+   1. TOP DASHBOARD HEADER & CONTROLS (APPLE HIG)
    ------------------------------------------------------------- */
 .dashboard-header-wrapper {
   background: var(--surface, #FFFFFF);
-  border: 1px solid var(--border, #E5E7EB);
-  border-radius: var(--radius-card, 14px);
-  padding: 22px 28px;
-  box-shadow: var(--shadow-card, 0 1px 4px rgba(0, 0, 0, 0.05));
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.08));
+  border-radius: var(--radius-card, 16px);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-card, 0 2px 10px rgba(0, 0, 0, 0.04));
   box-sizing: border-box;
   width: 100%;
   min-width: 0;
+  transition: box-shadow 0.25s ease;
 }
 
 .dashboard-title-row {
@@ -51,16 +52,16 @@
 }
 
 .dashboard-title-group h1 {
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--text-primary, #1F2937);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary, #1D1D1F);
   margin: 0 0 4px 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .dashboard-subtitle {
   font-size: 13.5px;
-  color: var(--text-secondary, #6B7280);
+  color: var(--text-secondary, #6E6E73);
   margin: 0;
   font-weight: 400;
 }
@@ -69,13 +70,13 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--secondary-bg, #F3F4F6);
-  border: 1px solid var(--border, #E5E7EB);
-  padding: 7px 16px;
+  background: var(--secondary-bg, #F5F5F7);
+  border: 1px solid var(--border-subtle, rgba(0, 0, 0, 0.04));
+  padding: 6px 14px;
   border-radius: var(--radius-pill, 9999px);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-primary, #1F2937);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-primary, #1D1D1F);
   white-space: nowrap;
 }
 
@@ -202,7 +203,7 @@
 }
 
 /* -------------------------------------------------------------
-   2. FOUR TOP KPI SUMMARY CARDS
+   2. FOUR TOP KPI SUMMARY CARDS (APPLE HIG ELEVATION)
    ------------------------------------------------------------- */
 .dashboard-kpi-grid,
 .kpi-grid {
@@ -220,23 +221,23 @@
   min-width: 0;
   height: 160px;
   background: var(--surface, #FFFFFF);
-  border: 1px solid var(--border, #E5E7EB);
-  border-radius: var(--radius-card, 14px);
-  padding: 20px;
-  box-shadow: var(--shadow-card, 0 1px 4px rgba(0, 0, 0, 0.05));
+  border: 1px solid var(--border, rgba(0, 0, 0, 0.07));
+  border-radius: var(--radius-card, 16px);
+  padding: 22px;
+  box-shadow: var(--shadow-card, 0 2px 10px rgba(0, 0, 0, 0.04));
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, border-color 0.22s;
   box-sizing: border-box;
 }
 
 .dashboard-kpi-card:hover,
 .kpi-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: #D1D5DB;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover, 0 8px 24px rgba(0, 0, 0, 0.07));
+  border-color: rgba(0, 0, 0, 0.12);
 }
 
 .kpi-card-header {
@@ -248,8 +249,32 @@
 
 .kpi-title {
   font-size: 13px;
-  font-weight: 600;
-  color: var(--text-secondary, #6B7280);
+  font-weight: 500;
+  color: var(--text-secondary, #6E6E73);
+  letter-spacing: -0.01em;
+}
+
+.kpi-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.dashboard-kpi-card:hover .kpi-icon-box {
+  transform: scale(1.06);
+}
+
+.kpi-value {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary, #1D1D1F);
+  letter-spacing: -0.03em;
+  margin: 0;
+  line-height: 1.15;
 }
 
 .kpi-icon-badge {
