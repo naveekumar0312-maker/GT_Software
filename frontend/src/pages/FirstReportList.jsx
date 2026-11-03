@@ -15,6 +15,7 @@ import {
   FileText
 } from 'lucide-react';
 import DownloadPDFButton from '../components/DownloadPDFButton';
+import CustomDropdown from '../components/CustomDropdown';
 import { firstReportService } from '../services/firstReportApi';
 import '../styles/FirstReportList.css';
 
@@ -244,30 +245,32 @@ const FirstReportList = () => {
           </div>
 
           <div className="report-filter-dropdowns">
-            <select
-              className="report-filter-select"
-              value={tourTypeFilter}
-              onChange={(e) => setTourTypeFilter(e.target.value)}
-              aria-label="Filter by Tour Type"
-            >
-              <option value="">All Tour Types</option>
-              <option value="International">International</option>
-              <option value="Domestic">Domestic</option>
-            </select>
+            <div style={{ minWidth: 160 }}>
+              <CustomDropdown
+                value={tourTypeFilter}
+                onChange={(e) => setTourTypeFilter(e.target.value)}
+                options={[
+                  { value: '', label: 'All Tour Types' },
+                  { value: 'International', label: 'International' },
+                  { value: 'Domestic', label: 'Domestic' },
+                ]}
+              />
+            </div>
 
-            <select
-              className="report-filter-select"
-              value={branchFilter}
-              onChange={(e) => setBranchFilter(e.target.value)}
-              aria-label="Filter by Branch"
-            >
-              <option value="">All Branches</option>
-              <option value="Coimbatore">Coimbatore</option>
-              <option value="Chennai">Chennai</option>
-              <option value="Erode">Erode</option>
-              <option value="Tiruppur">Tiruppur</option>
-              <option value="Salem">Salem</option>
-            </select>
+            <div style={{ minWidth: 150 }}>
+              <CustomDropdown
+                value={branchFilter}
+                onChange={(e) => setBranchFilter(e.target.value)}
+                options={[
+                  { value: '', label: 'All Branches' },
+                  { value: 'Coimbatore', label: 'Coimbatore' },
+                  { value: 'Chennai', label: 'Chennai' },
+                  { value: 'Erode', label: 'Erode' },
+                  { value: 'Tiruppur', label: 'Tiruppur' },
+                  { value: 'Salem', label: 'Salem' },
+                ]}
+              />
+            </div>
 
             {(searchTerm || tourTypeFilter || branchFilter) && (
               <button

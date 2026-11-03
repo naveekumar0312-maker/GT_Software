@@ -4,12 +4,7 @@ import './CustomDropdown.css';
 
 /**
  * Accessible Custom Dropdown Component
- * Features:
- * - 46px height, rounded corners, white background, custom chevron-down arrow
- * - Blue focus state (#2563EB) & soft shadow
- * - Full keyboard navigation (Arrow Up/Down, Enter/Space to select, Esc to close)
- * - Outside-click dismissal
- * - ARIA accessibility compliance
+ * Supports both string array and object array [{ value, label }]
  */
 const CustomDropdown = ({
   id,
@@ -43,7 +38,7 @@ const CustomDropdown = ({
   // Update highlighted index when menu opens
   useEffect(() => {
     if (isOpen) {
-      const idx = options.findIndex((opt) => opt === value);
+      const idx = options.findIndex((opt) => (typeof opt === 'object' && opt !== null ? opt.value === value : opt === value));
       setHighlightedIndex(idx >= 0 ? idx : 0);
     }
   }, [isOpen, options, value]);
@@ -60,10 +55,11 @@ const CustomDropdown = ({
 
   const handleSelect = (option) => {
     if (disabled) return;
+    const selectedVal = typeof option === 'object' && option !== null ? option.value : option;
     onChange({
       target: {
         name,
-        value: option,
+        value: selectedVal,
       },
     });
     setIsOpen(false);
@@ -95,7 +91,7 @@ const CustomDropdown = ({
       case 'Enter':
       case ' ':
         e.preventDefault();
-        if (highlightedIndex >= 0 && options[highlightedIndex]) {
+        if (highlightedIndex >= 0 && highlightedIndex < options.length) {
           handleSelect(options[highlightedIndex]);
         }
         break;
@@ -107,6 +103,12 @@ const CustomDropdown = ({
         break;
     }
   };
+
+  // Find display label for selected value
+  const selectedOption = options.find((opt) => (typeof opt === 'object' && opt !== null ? opt.value === value : opt === value));
+  const displayLabel = selectedOption
+    ? (typeof selectedOption === 'object' && selectedOption !== null ? selectedOption.label : selectedOption)
+    : (value || placeholder);
 
   return (
     <div className={`custom-dropdown-container ${className}`} ref={containerRef}>
@@ -124,7 +126,7 @@ const CustomDropdown = ({
         aria-required={required}
       >
         <span className={`custom-dropdown-value ${!value ? 'custom-dropdown-placeholder' : ''}`}>
-          {value || placeholder}
+          {displayLabel}
         </span>
         <span className={`custom-dropdown-arrow ${isOpen ? 'is-open' : ''}`}>
           <ChevronDown size={18} />
@@ -140,11 +142,13 @@ const CustomDropdown = ({
           tabIndex={-1}
         >
           {options.map((option, index) => {
-            const isSelected = option === value;
+            const optVal = typeof option === 'object' && option !== null ? option.value : option;
+            const optLabel = typeof option === 'object' && option !== null ? option.label : option;
+            const isSelected = optVal === value;
             const isHighlighted = index === highlightedIndex;
             return (
               <li
-                key={option}
+                key={optVal}
                 role="option"
                 aria-selected={isSelected}
                 className={`custom-dropdown-item ${isSelected ? 'is-selected' : ''} ${
@@ -153,7 +157,7 @@ const CustomDropdown = ({
                 onClick={() => handleSelect(option)}
                 onMouseEnter={() => setHighlightedIndex(index)}
               >
-                <span>{option}</span>
+                <span>{optLabel}</span>
                 {isSelected && (
                   <span className="custom-dropdown-check">
                     <Check size={16} />

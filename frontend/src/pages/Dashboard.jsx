@@ -37,6 +37,7 @@ import {
   getRecentReports,
   getUpcomingTours
 } from '../services/dashboardApi';
+import CustomDropdown from '../components/CustomDropdown';
 import '../styles/Dashboard.css';
 
 // Currency formatter for INR
@@ -170,21 +171,21 @@ export default function Dashboard() {
         <div className="dashboard-filters-bar">
           <div className="dashboard-filter-group">
             {/* Date Range Preset */}
-            <div className="filter-select-wrapper">
+            <div className="filter-select-wrapper" style={{ minWidth: 160 }}>
               <span className="filter-label">Period</span>
-              <select
-                className="dashboard-select"
+              <CustomDropdown
                 value={dateRange}
                 onChange={(e) => setDateRange(e.target.value)}
-              >
-                <option value="all_time">All Time</option>
-                <option value="today">Today</option>
-                <option value="this_week">This Week</option>
-                <option value="this_month">This Month</option>
-                <option value="last_month">Last Month</option>
-                <option value="this_year">This Year</option>
-                <option value="custom">Custom Date Range</option>
-              </select>
+                options={[
+                  { value: 'all_time', label: 'All Time' },
+                  { value: 'today', label: 'Today' },
+                  { value: 'this_week', label: 'This Week' },
+                  { value: 'this_month', label: 'This Month' },
+                  { value: 'last_month', label: 'Last Month' },
+                  { value: 'this_year', label: 'This Year' },
+                  { value: 'custom', label: 'Custom Date Range' },
+                ]}
+              />
             </div>
 
             {/* Custom Date Pickers */}
@@ -210,34 +211,34 @@ export default function Dashboard() {
             )}
 
             {/* Branch Filter */}
-            <div className="filter-select-wrapper">
+            <div className="filter-select-wrapper" style={{ minWidth: 150 }}>
               <span className="filter-label">Branch</span>
-              <select
-                className="dashboard-select"
+              <CustomDropdown
                 value={branch}
                 onChange={(e) => setBranch(e.target.value)}
-              >
-                <option value="ALL">All Branches</option>
-                <option value="Coimbatore">Coimbatore</option>
-                <option value="Chennai">Chennai</option>
-                <option value="Erode">Erode</option>
-                <option value="Tiruppur">Tiruppur</option>
-                <option value="Salem">Salem</option>
-              </select>
+                options={[
+                  { value: 'ALL', label: 'All Branches' },
+                  { value: 'Coimbatore', label: 'Coimbatore' },
+                  { value: 'Chennai', label: 'Chennai' },
+                  { value: 'Erode', label: 'Erode' },
+                  { value: 'Tiruppur', label: 'Tiruppur' },
+                  { value: 'Salem', label: 'Salem' },
+                ]}
+              />
             </div>
 
             {/* Tour Type Filter */}
-            <div className="filter-select-wrapper">
+            <div className="filter-select-wrapper" style={{ minWidth: 160 }}>
               <span className="filter-label">Tour Type</span>
-              <select
-                className="dashboard-select"
+              <CustomDropdown
                 value={tourType}
                 onChange={(e) => setTourType(e.target.value)}
-              >
-                <option value="ALL">All Tour Types</option>
-                <option value="International">International</option>
-                <option value="Domestic">Domestic</option>
-              </select>
+                options={[
+                  { value: 'ALL', label: 'All Tour Types' },
+                  { value: 'International', label: 'International' },
+                  { value: 'Domestic', label: 'Domestic' },
+                ]}
+              />
             </div>
           </div>
 
