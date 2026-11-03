@@ -1,0 +1,107 @@
+/* ========================================================= */
+/* Profit Summary Section Styles – First Report              */
+/* Guru Design: 3 Rounded Cards with soft pastel accents     */
+/* ========================================================= */
+
+.profit-summary-section {
+  background-color: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 22px 26px;
+  box-shadow: var(--shadow-card);
+  margin-top: var(--section-gap);
+}
+
+.profit-summary-header {
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.profit-summary-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 3px 0;
+  letter-spacing: -0.2px;
+}
+
+.profit-summary-subtitle {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* 3-Card Metrics Grid */
+.profit-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.profit-metric-card {
+  background-color: #FAFAF8;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.profit-metric-card:hover {
+  background-color: #FFFFFF;
+  border-color: rgba(169, 217, 152, 0.6);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.profit-metric-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.profit-metric-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+.profit-metric-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Profit Metric Dynamic State */
+.profit-metric-card.positive {
+  background: var(--primary-light);
+  border-color: rgba(169, 217, 152, 0.7);
+}
+
+.profit-metric-card.positive .profit-metric-label,
+.profit-metric-card.positive .profit-metric-value {
+  color: var(--primary-dark);
+}
+
+.profit-metric-card.negative {
+  background: var(--danger-bg);
+  border-color: var(--danger-border);
+}
+
+.profit-metric-card.negative .profit-metric-label,
+.profit-metric-card.negative .profit-metric-value {
+  color: var(--danger);
+}
+
+@media (max-width: 768px) {
+  .profit-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,61 @@
+/* ========================================================= */
+/* Aspire Tour ERP – Pure Light Theme First Report Page       */
+/* ========================================================= */
+
+.first-report-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  background: transparent;
+}
+
+/* Header Banner */
+.first-report-header {
+  background: var(--surface, #FFFFFF);
+  color: var(--text-primary, #1F2937);
+  text-align: center;
+  padding: 20px 24px;
+  border-radius: var(--radius-card, 14px);
+  border: 1px solid var(--border-default, #E5E7EB);
+  box-shadow: var(--shadow-card, 0 1px 4px rgba(0, 0, 0, 0.05));
+  margin-bottom: 24px;
+}
+
+.first-report-header .company-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  color: var(--text-primary, #1F2937);
+}
+
+.first-report-header .sheet-subtitle {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary, #6B7280);
+  letter-spacing: 0.3px;
+}
+
+.first-report-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.first-report-page .report-section {
+  background: #ffffff;
+  border: 1px solid #E5E7EB;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.first-report-page .section-heading {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #E5E7EB;
+  padding-bottom: 10px;
+}

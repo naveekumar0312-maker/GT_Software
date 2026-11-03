@@ -1,0 +1,182 @@
+/* ========================================================= */
+/* First & Final Report Print Sheet Styles                   */
+/* ========================================================= */
+
+.print-only-container,
+.print-document {
+  display: none !important;
+}
+
+@media print {
+  .print-only-container,
+  .print-document {
+    display: block !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 15mm 15mm 15mm 15mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #1e293b !important;
+    font-size: 12pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hide app navigation, sidebar, headers, and UI buttons completely */
+  .app-sidebar,
+  .sidebar-mobile-toggle,
+  .sidebar-backdrop,
+  .main-content > *:not(.print-only-container),
+  .view-page-header,
+  .view-sections-container,
+  .list-page-header,
+  .list-filter-card,
+  .pagination-bar,
+  .first-report-form-page,
+  .first-report-list-page {
+    display: none !important;
+  }
+
+  .main-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .print-only-container {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+  }
+
+  .print-sheet {
+    width: 100%;
+    background: #ffffff;
+    border: 1.5px solid #0f2744;
+  }
+
+  /* Print Header */
+  .print-header {
+    text-align: center;
+    padding: 16px 20px;
+    background-color: #f1f5f9;
+    border-bottom: 2px solid #0f2744;
+  }
+
+  .print-company-name {
+    font-size: 16pt;
+    font-weight: 800;
+    color: #0f2744;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .print-subtitle {
+    font-size: 12pt;
+    font-weight: 600;
+    color: #334155;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Print Table Section */
+  .print-section-title {
+    background-color: #0f2744;
+    color: #ffffff;
+    font-size: 11pt;
+    font-weight: 700;
+    padding: 6px 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .print-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+  }
+
+  .print-table td,
+  .print-table th {
+    border: 1px solid #cbd5e1;
+    padding: 8px 12px;
+    font-size: 10.5pt;
+    vertical-align: middle;
+  }
+
+  .print-table .label-cell {
+    background-color: #f8fafc;
+    color: #334155;
+    font-weight: 700;
+    width: 25%;
+    font-size: 10pt;
+  }
+
+  .print-table .value-cell {
+    color: #0f172a;
+    font-weight: 500;
+    width: 25%;
+  }
+
+  .print-table .value-highlight {
+    font-weight: 700;
+    color: #1e3a8a;
+  }
+
+  /* Excel-like Guest 3-Column Layout */
+  .excel-guest-grid {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .excel-guest-grid td,
+  .excel-guest-grid th {
+    border: 1px solid #cbd5e1;
+    padding: 7px 10px;
+    font-size: 10.5pt;
+  }
+
+  .excel-guest-grid .excel-col-header {
+    background-color: #e2e8f0;
+    font-weight: 700;
+    color: #0f2744;
+    text-align: center;
+    font-size: 10pt;
+    text-transform: uppercase;
+  }
+
+  /* Print Signatures and Footer */
+  .print-footer-signatures {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 24px 20px;
+    margin-top: 20px;
+  }
+
+  .sign-box {
+    text-align: center;
+    width: 200px;
+    border-top: 1px dashed #64748b;
+    padding-top: 6px;
+    font-size: 10pt;
+    font-weight: 600;
+    color: #334155;
+  }
+
+  .print-meta-bar {
+    border-top: 1px solid #cbd5e1;
+    padding: 8px 14px;
+    font-size: 8.5pt;
+    color: #64748b;
+    display: flex;
+    justify-content: space-between;
+  }
+}

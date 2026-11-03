@@ -1,0 +1,300 @@
+/* ========================================================= */
+/* Aspire Tour ERP – Pure Light Theme First & Final Report View */
+/* ========================================================= */
+
+.first-report-view-page {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Header & Action Bar */
+.view-page-header {
+  margin-bottom: 24px;
+}
+
+.view-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--surface, #FFFFFF);
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: var(--radius-card, 14px);
+  padding: 20px 28px;
+  box-shadow: var(--shadow-card, 0 1px 4px rgba(0, 0, 0, 0.05));
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.view-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.crm-pill-large {
+  display: inline-flex;
+  align-items: center;
+  background: #F3F4F6;
+  color: #1F2937;
+  padding: 7px 16px;
+  border-radius: var(--radius-pill, 9999px);
+  font-weight: 800;
+  font-size: 14px;
+  font-family: monospace;
+  border: 1px solid #E5E7EB;
+}
+
+.view-title-wrap h1 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary, #1F2937);
+  margin: 0 0 2px 0;
+  letter-spacing: -0.015em;
+}
+
+.view-title-wrap p {
+  font-size: 13px;
+  color: var(--text-secondary, #6B7280);
+  margin: 0;
+}
+
+.view-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-view-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: var(--radius-button, 10px);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.16s ease;
+  white-space: nowrap;
+}
+
+.btn-view-action.btn-back {
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--border-default, #E5E7EB);
+  color: var(--text-primary, #1F2937);
+}
+
+.btn-view-action.btn-back:hover {
+  background: var(--surface-soft, #F3F4F6);
+  border-color: #D1D5DB;
+}
+
+.btn-view-action.btn-edit {
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--border-default, #E5E7EB);
+  color: var(--text-primary, #1F2937);
+}
+
+.btn-view-action.btn-edit:hover {
+  background: var(--surface-soft, #F3F4F6);
+  border-color: #9CA3AF;
+}
+
+.btn-view-action.btn-print,
+.btn-view-action.btn-view-print {
+  background: var(--surface, #FFFFFF);
+  color: var(--text-primary, #1F2937);
+  border: 1px solid var(--border-default, #E5E7EB);
+}
+
+.btn-view-action.btn-print:hover,
+.btn-view-action.btn-view-print:hover {
+  background: var(--surface-soft, #F3F4F6);
+  border-color: #9CA3AF;
+}
+
+.btn-view-action.btn-view-pdf {
+  background: var(--primary, #374151);
+  color: #FFFFFF;
+  border: 1px solid #374151;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-view-action.btn-view-pdf:hover:not(:disabled) {
+  background: var(--primary-hover, #1F2937);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.btn-view-action.btn-view-pdf:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+/* View Sections */
+.view-sections-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap, 24px);
+}
+
+.view-card {
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: var(--radius-card, 14px);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-card, 0 1px 4px rgba(0, 0, 0, 0.05));
+  box-sizing: border-box;
+}
+
+.view-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary, #1F2937);
+  margin: 0 0 20px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-default, #E5E7EB);
+  letter-spacing: -0.01em;
+}
+
+/* Two-column layout inside fields: label left, value right */
+.view-grid-3,
+.view-details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px 20px;
+  align-items: stretch;
+}
+
+.view-column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.view-data-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 16px;
+  background: #F8F9FB;
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: 8px;
+  gap: 14px;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary, #6B7280);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.field-value {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-primary, #1F2937);
+  text-align: right;
+  word-break: break-word;
+}
+
+.field-value.highlight-box {
+  background: #FFFFFF;
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: 1px solid #D1D5DB;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+/* Backward compatibility for any other detail items */
+.view-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.detail-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--text-secondary, #6B7280);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--text-primary, #1F2937);
+}
+
+/* Signatures block at end of report */
+.view-signatures-card {
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: var(--radius-card, 14px);
+  padding: 32px 36px;
+  box-shadow: var(--shadow-card, 0 1px 4px rgba(0, 0, 0, 0.05));
+  margin-top: 4px;
+}
+
+.view-signatures-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  align-items: flex-end;
+}
+
+.view-signature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.view-signature-line {
+  width: 100%;
+  max-width: 220px;
+  height: 1px;
+  background-color: #9CA3AF;
+  margin-bottom: 4px;
+}
+
+.view-signature-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary, #374151);
+}
+
+.view-signature-subtext {
+  font-size: 11.5px;
+  color: var(--text-secondary, #6B7280);
+}
+
+@media (max-width: 900px) {
+  .view-grid-3,
+  .view-details-grid,
+  .view-signatures-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .view-grid-3,
+  .view-details-grid,
+  .view-signatures-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

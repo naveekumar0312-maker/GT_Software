@@ -1,0 +1,282 @@
+/* ==========================================================================
+   CRM – Pure Light Theme Final Financial Summary (Section 6)
+   White & Light Grey UI with Semantic Profit Display
+   ========================================================================== */
+
+.financial-summary-card {
+  width: 100%;
+  min-width: 0;
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: 16px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.035);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.financial-header-banner {
+  background: var(--surface, #FFFFFF);
+  border-bottom: 1px solid var(--border-default, #E5E7EB);
+  padding: 0 0 14px 0;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.financial-title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.financial-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary, #1F2937);
+  letter-spacing: -0.015em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.financial-subtitle {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: var(--text-secondary, #6B7280);
+  font-weight: 400;
+}
+
+.financial-profit-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.financial-profit-badge.badge-profit,
+.financial-profit-badge.badge-positive {
+  background: #ECFDF5;
+  color: #059669;
+  border: 1px solid #A7F3D0;
+}
+
+.financial-profit-badge.badge-loss,
+.financial-profit-badge.badge-negative {
+  background: #FEF2F2;
+  color: #DC2626;
+  border: 1px solid #FECACA;
+}
+
+.financial-profit-badge.badge-zero {
+  background: #F3F4F6;
+  color: #6B7280;
+  border: 1px solid #E5E7EB;
+}
+
+.financial-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.badge-profit .financial-badge-dot {
+  background-color: #10B981;
+}
+
+.badge-loss .financial-badge-dot {
+  background-color: #EF4444;
+}
+
+.badge-zero .financial-badge-dot {
+  background-color: #9CA3AF;
+}
+
+/* 6 Professional Summary Rows / Cards Layout */
+.financial-rows-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.financial-summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background-color: #F8F9FB;
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: 12px;
+  transition: all 0.15s ease;
+  gap: 16px;
+}
+
+.financial-summary-row:hover {
+  background-color: #FFFFFF;
+  border-color: #D1D5DB;
+}
+
+.financial-row-label-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.financial-row-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #4B5563;
+  flex-shrink: 0;
+}
+
+.financial-row-label {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #1F2937;
+  display: block;
+}
+
+.financial-row-hint {
+  font-size: 12px;
+  color: #6B7280;
+  display: block;
+  margin-top: 2px;
+}
+
+.financial-row-value-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.financial-row-value {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+  font-family: var(--font-heading, inherit);
+}
+
+/* Row 03: Total Cost with GST Highlight */
+.financial-summary-row.row-cost-with-gst {
+  background-color: #F3F4F6;
+  border-color: #D1D5DB;
+}
+
+.financial-summary-row.row-cost-with-gst .financial-row-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+}
+
+/* Row 04: Processing Fee Input */
+.financial-fee-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 160px;
+}
+
+.financial-fee-prefix {
+  position: absolute;
+  left: 12px;
+  color: #6B7280;
+  font-weight: 600;
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.financial-fee-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px 0 28px;
+  background-color: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #111827;
+  text-align: right;
+  outline: none;
+  transition: all 0.15s ease;
+  box-sizing: border-box;
+}
+
+.financial-fee-input:focus {
+  border-color: #9CA3AF;
+  box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.25);
+}
+
+/* Row 06: Net Profit Highlight */
+.financial-summary-row.row-net-profit {
+  background-color: #F8F9FB;
+  border: 2px solid #E5E7EB;
+  padding: 18px 20px;
+  margin-top: 4px;
+}
+
+.financial-summary-row.row-net-profit .financial-row-label {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.financial-summary-row.row-net-profit .financial-row-value {
+  font-size: 20px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.financial-summary-row.row-net-profit.profit-profit {
+  background-color: #F0FDF4;
+  border-color: #BBF7D0;
+}
+
+.financial-summary-row.row-net-profit.profit-profit .financial-row-value,
+.financial-summary-row.row-net-profit.profit-profit .financial-row-label {
+  color: #047857;
+}
+
+.financial-summary-row.row-net-profit.profit-loss {
+  background-color: #FEF2F2;
+  border-color: #FECACA;
+}
+
+.financial-summary-row.row-net-profit.profit-loss .financial-row-value,
+.financial-summary-row.row-net-profit.profit-loss .financial-row-label {
+  color: #DC2626;
+}
+
+@media (max-width: 640px) {
+  .financial-summary-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .financial-row-value-wrap {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .financial-fee-wrapper {
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,322 @@
+/* ========================================================= */
+/* Aspire Tour ERP – Pure Light Theme First & Final Report Form */
+/* Clean white cards, neutral inputs, charcoal action buttons */
+/* ========================================================= */
+
+.first-report-form-page {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Navigation / Breadcrumb Header */
+.form-page-header {
+  margin-bottom: 24px;
+}
+
+.back-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary, #6B7280);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill, 9999px);
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--border-default, #E5E7EB);
+  transition: all 0.15s ease;
+}
+
+.back-nav-link:hover {
+  color: var(--text-primary, #1F2937);
+  background-color: var(--surface-soft, #F3F4F6);
+  border-color: #D1D5DB;
+}
+
+.form-header-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--surface, #FFFFFF);
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: var(--radius-card, 14px);
+  padding: 22px 28px;
+  box-shadow: var(--shadow-card, 0 1px 4px rgba(0, 0, 0, 0.05));
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.form-header-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-main-heading {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-primary, #1F2937);
+  margin: 0 0 4px 0;
+  letter-spacing: -0.015em;
+}
+
+.form-sub-heading {
+  font-size: 13.5px;
+  color: var(--text-secondary, #6B7280);
+  margin: 0;
+}
+
+/* Alert Notification Boxes */
+.form-alert {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-radius: var(--radius-sm, 8px);
+  margin-bottom: 20px;
+  font-size: 13.5px;
+  animation: fadeIn 0.2s ease;
+}
+
+.form-alert.alert-success {
+  background-color: var(--success-bg, #ECFDF5);
+  border: 1px solid var(--success-border, #A7F3D0);
+  color: var(--success-color, #059669);
+}
+
+.form-alert.alert-danger {
+  background-color: var(--danger-bg, #FEF2F2);
+  border: 1px solid var(--danger-border, #FECACA);
+  color: var(--danger-color, #DC2626);
+}
+
+.form-alert .alert-icon {
+  flex-shrink: 0;
+}
+
+.form-alert .alert-message {
+  flex: 1;
+}
+
+/* Form Shell & Sections */
+.report-form,
+.first-report-form,
+.final-report-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.report-section {
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: 16px;
+  padding: 28px 30px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.035);
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.section-heading {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary, #1F2937);
+  margin: 0 0 20px 0;
+  letter-spacing: -0.015em;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-default, #E5E7EB);
+}
+
+/* Grid Layouts */
+.report-grid,
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.form-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.report-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Form Field & Labeling */
+.report-field,
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.report-field label,
+.form-field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary, #1F2937);
+}
+
+.report-field label .req,
+.required-star {
+  color: var(--danger, #EF4444);
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.field-hint-msg {
+  font-size: 11.5px;
+  color: var(--text-muted, #9CA3AF);
+}
+
+.field-error-msg {
+  font-size: 11.5px;
+  color: var(--danger, #EF4444);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Form Action Buttons Bar */
+.form-actions-bar,
+.form-action-bar,
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 28px;
+  background-color: var(--surface, #FFFFFF);
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: var(--radius-card, 14px);
+  box-shadow: var(--shadow-card, 0 1px 4px rgba(0, 0, 0, 0.05));
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-form {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 22px;
+  border-radius: var(--radius-button, 10px);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: transform 0.16s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.16s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.16s ease,
+              border-color 0.16s ease,
+              color 0.16s ease;
+}
+
+/* Reset Form: Left aligned with light neutral bg, subtle border */
+.btn-form#reset-form-btn,
+.btn-form-reset {
+  background-color: var(--surface-soft, #F3F4F6);
+  color: var(--text-secondary, #6B7280);
+  border: 1px solid var(--border-default, #E5E7EB);
+  margin-right: auto;
+}
+
+.btn-form#reset-form-btn:hover:not(:disabled),
+.btn-form-reset:hover:not(:disabled) {
+  background-color: #E5E7EB;
+  color: var(--text-primary, #1F2937);
+  border-color: #D1D5DB;
+}
+
+/* Cancel: White background, light border, dark text */
+.btn-form#cancel-btn,
+.btn-form-cancel {
+  background-color: var(--surface, #FFFFFF);
+  color: var(--text-primary, #1F2937);
+  border: 1px solid var(--border-default, #E5E7EB);
+}
+
+.btn-form#cancel-btn:hover,
+.btn-form-cancel:hover {
+  background-color: var(--surface-soft, #F3F4F6);
+  border-color: #D1D5DB;
+}
+
+/* Save / Submit: Charcoal background, white text, strong priority */
+.btn-form.btn-submit,
+.btn-form#save-report-btn,
+.btn-form-save {
+  background-color: var(--primary, #374151);
+  color: #FFFFFF;
+  border: 1px solid #374151;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-form.btn-submit:hover:not(:disabled),
+.btn-form#save-report-btn:hover:not(:disabled),
+.btn-form-save:hover:not(:disabled) {
+  background-color: var(--primary-hover, #1F2937);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-form:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 992px) {
+  .report-grid,
+  .form-grid-3,
+  .form-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .report-grid,
+  .form-grid-3,
+  .form-grid-4,
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .form-actions-bar,
+  .form-action-bar,
+  .form-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .btn-form#reset-form-btn,
+  .btn-form-reset {
+    margin-right: 0;
+    justify-content: center;
+  }
+  .btn-form,
+  .btn-form-save,
+  .btn-form-cancel {
+    width: 100%;
+    justify-content: center;
+  }
+}

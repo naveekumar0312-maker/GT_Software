@@ -1,0 +1,294 @@
+/* ==========================================================================
+   CRM – Pure Light Theme GST Details & Calculation (Section 5)
+   ========================================================================== */
+
+.gst-section-card {
+  width: 100%;
+  min-width: 0;
+  background: var(--surface, #FFFFFF);
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: 16px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.035);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.gst-header-banner {
+  background: var(--surface, #FFFFFF);
+  border-bottom: 1px solid var(--border-default, #E5E7EB);
+  padding: 0 0 14px 0;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.gst-title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.gst-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary, #1F2937);
+  letter-spacing: -0.015em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gst-subtitle {
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: var(--text-secondary, #6B7280);
+  font-weight: 400;
+}
+
+.gst-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.gst-status-pill.pill-active,
+.gst-status-pill.active {
+  background: #ECFDF5;
+  color: #059669;
+  border: 1px solid #A7F3D0;
+}
+
+.gst-status-pill.pill-inactive,
+.gst-status-pill.inactive {
+  background: var(--surface-soft, #F3F4F6);
+  color: var(--text-muted, #9CA3AF);
+  border: 1px solid var(--border-default, #E5E7EB);
+}
+
+.gst-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.pill-active .gst-status-dot {
+  background-color: #10B981;
+}
+
+.pill-inactive .gst-status-dot {
+  background-color: #9CA3AF;
+}
+
+.gst-body {
+  padding: 0;
+}
+
+/* 2 Column Grid for Fields */
+.gst-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.gst-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gst-field-label,
+.gst-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary, #1F2937);
+  margin-bottom: 0;
+}
+
+.gst-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.gst-input-prefix,
+.gst-input-suffix {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary, #6B7280);
+  font-size: 14px;
+  font-weight: 600;
+  pointer-events: none;
+  z-index: 2;
+  width: 36px;
+}
+
+.gst-input-prefix {
+  left: 0;
+}
+
+.gst-input-suffix {
+  right: 0;
+}
+
+.gst-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  background-color: var(--surface, #FFFFFF);
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: 10px;
+  color: var(--text-primary, #1F2937);
+  font-size: 14px;
+  outline: none;
+  transition: all 0.18s ease;
+  box-sizing: border-box;
+}
+
+.gst-input.has-prefix {
+  padding-left: 36px;
+}
+
+.gst-input.has-suffix {
+  padding-right: 36px;
+}
+
+.gst-input:focus {
+  border-color: var(--border-focus, #9CA3AF);
+  box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.25);
+}
+
+.gst-input:disabled,
+.gst-input[disabled] {
+  background-color: var(--surface-soft, #F3F4F6);
+  color: var(--text-muted, #9CA3AF);
+  cursor: not-allowed;
+  border-color: #E5E7EB;
+}
+
+.gst-field-hint {
+  font-size: 12px;
+  color: var(--text-secondary, #6B7280);
+  margin-top: 2px;
+}
+
+.gst-error-msg {
+  font-size: 12px;
+  color: var(--danger, #EF4444);
+  font-weight: 500;
+}
+
+/* Structured Calculation Summary Area */
+.gst-calculation-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 24px;
+  background: #F8F9FB;
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: 12px;
+  margin-top: 24px;
+}
+
+.gst-calc-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #374151;
+  padding: 4px 0;
+}
+
+.gst-calc-label {
+  font-weight: 500;
+  color: #4B5563;
+}
+
+.gst-calc-value {
+  font-weight: 700;
+  color: #1F2937;
+  font-size: 15px;
+}
+
+.gst-calc-row.final-highlight {
+  border-top: 1px solid #E5E7EB;
+  padding-top: 14px;
+  margin-top: 6px;
+  background: #F3F4F6;
+  margin-left: -24px;
+  margin-right: -24px;
+  margin-bottom: -20px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 16px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.gst-calc-row.final-highlight .gst-calc-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.gst-calc-row.final-highlight .highlight-amount {
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+}
+
+/* View Mode Details */
+.gst-view-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.gst-view-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 16px;
+  background: #F8F9FB;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+}
+
+.gst-view-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gst-view-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1F2937;
+}
+
+.gst-view-value.final-highlight {
+  color: #111827;
+  font-size: 17px;
+}
+
+@media (max-width: 768px) {
+  .gst-form-grid,
+  .gst-view-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

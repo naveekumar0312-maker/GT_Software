@@ -1,0 +1,224 @@
+/* ========================================================= */
+/* Aspire Tour ERP – Pure Light Theme Payment Spent Styles    */
+/* ========================================================= */
+
+.payment-spent-section {
+  width: 100%;
+  min-width: 0;
+  background-color: var(--surface, #FFFFFF);
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: 16px;
+  padding: 28px 30px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.035);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.payment-spent-header-row,
+.payment-spent-header-banner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-default, #E5E7EB);
+  gap: 20px;
+}
+
+.payment-spent-header-titles,
+.payment-spent-title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-spent-section-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary, #1F2937);
+  margin: 0;
+  letter-spacing: -0.015em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.payment-spent-section-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary, #6B7280);
+  margin: 4px 0 0 0;
+  font-weight: 400;
+}
+
+/* Add Spent Row Button */
+.btn-add-spent {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--primary, #374151);
+  color: #FFFFFF;
+  padding: 9px 18px;
+  border-radius: var(--radius-button, 10px);
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid #374151;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.16s ease;
+  white-space: nowrap;
+}
+
+.btn-add-spent:hover:not(:disabled) {
+  background-color: var(--primary-hover, #1F2937);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-add-spent:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Table Container & Scrolling */
+.payment-spent-table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: var(--radius-md, 10px);
+  background: var(--surface, #FFFFFF);
+  -webkit-overflow-scrolling: touch;
+}
+
+.payment-spent-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13.5px;
+}
+
+.payment-spent-table th {
+  background-color: var(--surface-soft, #F3F4F6);
+  color: var(--text-secondary, #6B7280);
+  font-weight: 700;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border-default, #E5E7EB);
+  white-space: nowrap;
+}
+
+.payment-spent-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #F3F4F6;
+  color: var(--text-primary, #1F2937);
+  vertical-align: middle;
+}
+
+.payment-spent-table tbody tr:hover {
+  background-color: #F9FAFB;
+}
+
+.payment-spent-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.spent-row-num {
+  font-weight: 700;
+  color: var(--text-muted, #9CA3AF);
+  text-align: center;
+  width: 32px;
+}
+
+.spent-input {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: var(--radius-input, 10px);
+  font-size: 13.5px;
+  color: var(--text-primary, #1F2937);
+  background-color: var(--surface, #FFFFFF);
+  outline: none;
+  transition: all 0.18s ease;
+  box-sizing: border-box;
+}
+
+.spent-input:focus {
+  border-color: var(--border-focus, #9CA3AF);
+  box-shadow: 0 0 0 2px rgba(156, 163, 175, 0.25);
+}
+
+.spent-input.is-invalid {
+  border-color: var(--danger, #EF4444);
+  background-color: var(--danger-bg, #FEF2F2);
+}
+
+.btn-remove-spent-row {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm, 6px);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted, #9CA3AF);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-remove-spent-row:hover:not(:disabled) {
+  background-color: var(--danger-bg, #FEF2F2);
+  color: var(--danger, #DC2626);
+  border-color: var(--danger-border, #FECACA);
+}
+
+.btn-remove-spent-row:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Payment Spent Summary Panel */
+.payment-spent-summary-panel,
+.spent-summary-footer {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  padding: 16px 24px;
+  border: 1px solid var(--border-default, #E5E7EB);
+  border-radius: 12px;
+  background: #F8F9FB;
+  text-align: right;
+  margin-left: auto;
+  width: fit-content;
+  box-sizing: border-box;
+}
+
+.payment-spent-total-label,
+.spent-total-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary, #4B5563);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.payment-spent-total-value,
+.spent-total-value {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary, #111827);
+  font-family: var(--font-heading, inherit);
+}
+
+/* Empty State */
+.payment-spent-empty-state,
+.payment-spent-empty-row {
+  padding: 28px 20px;
+  text-align: center;
+  color: var(--text-secondary, #6B7280);
+  font-size: 13.5px;
+}
+
