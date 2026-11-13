@@ -285,6 +285,7 @@ const FinalReportView = () => {
             clientServices={report.client_services || []}
             dmcServices={report.dmc_services || []}
             gstAmount={report.gst_amount}
+            baseTotalCost={report.base_total_cost}
             processingFee={report.processing_fee}
             readOnly={true}
             initialTotalCost={report.total_cost}
@@ -554,7 +555,12 @@ const FinalReportView = () => {
               </tr>
               <tr style={{ background: '#f0f7ff' }}>
                 <td style={{ textAlign: 'center', fontWeight: 'bold', color: '#1e40af' }}>03</td>
-                <td style={{ fontWeight: 'bold', color: '#1e40af' }}>Total Cost with GST</td>
+                <td style={{ fontWeight: 'bold', color: '#1e40af' }}>
+                  Total Cost with GST{' '}
+                  <span style={{ color: '#64748b', fontSize: '8.5pt' }}>
+                    {parseFloat(report.base_total_cost) > 0 ? '(Base Total Cost + GST)' : '(Total Cost + GST)'}
+                  </span>
+                </td>
                 <td style={{ textAlign: 'right', fontWeight: 'bold', color: '#1d4ed8' }}>{formatINR(report.total_cost_with_gst)}</td>
               </tr>
               <tr>

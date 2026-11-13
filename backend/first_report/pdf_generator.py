@@ -654,7 +654,7 @@ class ReportPDFGenerator:
         gst_pct = Decimal(str(report.gst_percentage or '0.00')) if is_gst else Decimal('0.00')
         base_cost = Decimal(str(report.base_total_cost or client_cost))
         gst_amt = Decimal(str(report.gst_amount or '0.00')) if is_gst else Decimal('0.00')
-        tc_with_gst = client_cost + gst_amt
+        tc_with_gst = base_cost + gst_amt
         proc_fee = Decimal(str(report.processing_fee or '0.00'))
         net_profit = tc_with_gst - dmc_expense - proc_fee
 

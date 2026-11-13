@@ -990,6 +990,7 @@ const FinalReportForm = () => {
           clientServices={services}
           dmcServices={dmcServices}
           gstAmount={currentGstAmount}
+          baseTotalCost={formData.base_total_cost}
           processingFee={formData.processing_fee}
           onProcessingFeeChange={handleProcessingFeeChange}
           error={errors.processing_fee}

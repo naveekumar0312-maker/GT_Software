@@ -225,10 +225,11 @@ class FinalReport(models.Model):
             self.final_total_cost = round(base, 2)
 
         # Section 6 Financial Summary calculations
-        # total_cost_with_gst = total_cost + gst_amount
-        tc = Decimal(str(self.total_cost or '0.00'))
+        # If base_total_cost is provided and > 0, calculate Total Cost with GST on base_total_cost;
+        # otherwise fallback to client services total_cost
+        effective_base = base if base > Decimal('0.00') else Decimal(str(self.total_cost or '0.00'))
         gst_amt = Decimal(str(self.gst_amount or '0.00'))
-        self.total_cost_with_gst = round(tc + gst_amt, 2)
+        self.total_cost_with_gst = round(effective_base + gst_amt, 2)
 
         # net_profit = total_cost_with_gst - total_expense - processing_fee
         te = Decimal(str(self.total_expense or '0.00'))

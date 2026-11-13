@@ -27,10 +27,11 @@ export const computeDMCTotalExpense = (dmcServices = []) => {
   return totalPaise / 100;
 };
 
-export const computeTotalCostWithGST = (totalCost, gstAmount) => {
-  const tc = parseFloat(totalCost) || 0;
+export const computeTotalCostWithGST = (baseTotalCost, gstAmount, fallbackTotalCost = 0) => {
+  const base = parseFloat(baseTotalCost);
+  const effectiveBase = (!isNaN(base) && base > 0) ? base : (parseFloat(fallbackTotalCost) || 0);
   const gst = parseFloat(gstAmount) || 0;
-  return Math.round((tc + gst) * 100) / 100;
+  return Math.round((effectiveBase + gst) * 100) / 100;
 };
 
 export const computeNetProfit = (totalCostWithGST, totalExpense, processingFee) => {
@@ -44,6 +45,7 @@ const FinalFinancialSummary = ({
   clientServices = [],
   dmcServices = [],
   gstAmount = 0,
+  baseTotalCost = null,
   processingFee = '0.00',
   onProcessingFeeChange = () => {},
   readOnly = false,
@@ -67,13 +69,20 @@ const FinalFinancialSummary = ({
     return parseFloat(gstAmount) || 0;
   }, [gstAmount]);
 
-  // 3. Total Cost with GST = Total Cost + GST
+  // Base Total Cost if provided
+  const parsedBaseTotalCost = useMemo(() => {
+    if (baseTotalCost === null || baseTotalCost === undefined) return null;
+    const val = parseFloat(baseTotalCost);
+    return isNaN(val) ? null : val;
+  }, [baseTotalCost]);
+
+  // 3. Total Cost with GST = (Base Total Cost if > 0 else Total Cost) + GST
   const totalCostWithGST = useMemo(() => {
     if (initialTotalCostWithGST !== null && initialTotalCostWithGST !== undefined) {
       return parseFloat(initialTotalCostWithGST) || 0;
     }
-    return computeTotalCostWithGST(totalCost, effectiveGstAmount);
-  }, [totalCost, effectiveGstAmount, initialTotalCostWithGST]);
+    return computeTotalCostWithGST(parsedBaseTotalCost, effectiveGstAmount, totalCost);
+  }, [parsedBaseTotalCost, totalCost, effectiveGstAmount, initialTotalCostWithGST]);
 
   // 4. Processing Fee
   const effectiveProcessingFee = useMemo(() => {
@@ -163,7 +172,11 @@ const FinalFinancialSummary = ({
             <span className="financial-row-num">03</span>
             <div>
               <span className="financial-row-label">Total Cost with GST</span>
-              <span className="financial-row-hint">(Total Cost + GST)</span>
+              <span className="financial-row-hint">
+                {parsedBaseTotalCost !== null && parsedBaseTotalCost > 0
+                  ? '(Base Total Cost + GST)'
+                  : '(Total Cost + GST)'}
+              </span>
             </div>
           </div>
           <div className="financial-row-value-wrap">
