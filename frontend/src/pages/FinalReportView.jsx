@@ -545,8 +545,15 @@ const FinalReportView = () => {
             <tbody>
               <tr>
                 <td style={{ textAlign: 'center', fontWeight: 'bold' }}>01</td>
-                <td>Total Cost <span style={{ color: '#64748b', fontSize: '8.5pt' }}>(Client Services Grand Total)</span></td>
-                <td style={{ textAlign: 'right', fontWeight: '600' }}>{formatINR(report.total_cost)}</td>
+                <td>
+                  {parseFloat(report.base_total_cost) > 0 ? 'Base Total Cost' : 'Total Cost'}{' '}
+                  <span style={{ color: '#64748b', fontSize: '8.5pt' }}>
+                    {parseFloat(report.base_total_cost) > 0 ? '(Base Cost Before GST)' : '(Services - Client Grand Total)'}
+                  </span>
+                </td>
+                <td style={{ textAlign: 'right', fontWeight: '600' }}>
+                  {formatINR(parseFloat(report.base_total_cost) > 0 ? report.base_total_cost : report.total_cost)}
+                </td>
               </tr>
               <tr>
                 <td style={{ textAlign: 'center', fontWeight: 'bold' }}>02</td>

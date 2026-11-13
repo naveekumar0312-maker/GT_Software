@@ -76,6 +76,14 @@ const FinalFinancialSummary = ({
     return isNaN(val) ? null : val;
   }, [baseTotalCost]);
 
+  // Effective Row 01 Cost: When Base Total Cost is provided and > 0, Row 01 uses Base Total Cost
+  const displayCost = useMemo(() => {
+    if (parsedBaseTotalCost !== null && parsedBaseTotalCost > 0) {
+      return parsedBaseTotalCost;
+    }
+    return totalCost;
+  }, [parsedBaseTotalCost, totalCost]);
+
   // 3. Total Cost with GST = (Base Total Cost if > 0 else Total Cost) + GST
   const totalCostWithGST = useMemo(() => {
     if (initialTotalCostWithGST !== null && initialTotalCostWithGST !== undefined) {
@@ -138,17 +146,23 @@ const FinalFinancialSummary = ({
 
       {/* Exactly Six Rows in Ordered Arrangement */}
       <div className="financial-rows-container">
-        {/* Row 1: Total Cost */}
+        {/* Row 1: Total Cost / Base Total Cost */}
         <div className="financial-summary-row">
           <div className="financial-row-label-wrap">
             <span className="financial-row-num">01</span>
             <div>
-              <span className="financial-row-label">Total Cost</span>
-              <span className="financial-row-hint">(Services - Client Grand Total)</span>
+              <span className="financial-row-label">
+                {parsedBaseTotalCost !== null && parsedBaseTotalCost > 0 ? 'Base Total Cost' : 'Total Cost'}
+              </span>
+              <span className="financial-row-hint">
+                {parsedBaseTotalCost !== null && parsedBaseTotalCost > 0
+                  ? '(Base Cost Before GST)'
+                  : '(Services - Client Grand Total)'}
+              </span>
             </div>
           </div>
           <div className="financial-row-value-wrap">
-            <span className="financial-row-value">{formatINR(totalCost)}</span>
+            <span className="financial-row-value">{formatINR(displayCost)}</span>
           </div>
         </div>
 
