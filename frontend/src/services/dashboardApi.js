@@ -30,6 +30,11 @@ export const getUpcomingTours = async (params = {}) => {
   return await apiClient.get('/dashboard/upcoming-tours/', { params });
 };
 
+// 7. Trip End Reminders
+export const getTripReminders = async (params = {}) => {
+  return await apiClient.get('/dashboard/trip-reminders/', { params });
+};
+
 export const dashboardService = {
   getOverview: getDashboardOverview,
   getFinancialChart: getFinancialChartData,
@@ -37,6 +42,7 @@ export const dashboardService = {
   getPaymentSummary: getPaymentSummary,
   getRecentReports: getRecentReports,
   getUpcomingTours: getUpcomingTours,
+  getTripReminders: getTripReminders,
 };
 
 export default dashboardService;

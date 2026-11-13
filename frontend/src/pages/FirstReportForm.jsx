@@ -153,10 +153,10 @@ const FirstReportForm = () => {
       return;
     }
 
-    // Mobile Number – Numeric input (max 10 digits)
+    // Mobile Number – Allow +, digits, spaces, hyphens (supports international formats)
     if (name === 'mobile_no') {
-      const digitsOnly = value.replace(/\D/g, '').slice(0, 10);
-      setFormData((prev) => ({ ...prev, mobile_no: digitsOnly }));
+      const sanitized = value.replace(/[^\d+\s\-()]/g, '').slice(0, 25);
+      setFormData((prev) => ({ ...prev, mobile_no: sanitized }));
       return;
     }
 
@@ -211,9 +211,9 @@ const FirstReportForm = () => {
     if (!formData.mobile_no.trim()) {
       newErrors.mobile_no = 'Mobile No is required';
     } else {
-      const cleanPhone = formData.mobile_no.replace(/\D/g, '');
-      if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
-        newErrors.mobile_no = 'Enter a valid 10-digit Indian mobile number';
+      const digitsOnly = formData.mobile_no.replace(/\D/g, '');
+      if (digitsOnly.length < 7 || digitsOnly.length > 16) {
+        newErrors.mobile_no = 'Enter a valid mobile number (7 to 16 digits, country code optional e.g. +91)';
       }
     }
     if (formData.dob && formData.dob > todayIso) {
@@ -502,9 +502,7 @@ const FirstReportForm = () => {
                   type="tel"
                   id="mobile_no"
                   name="mobile_no"
-                  inputMode="numeric"
-                  maxLength={10}
-                  placeholder="10-digit mobile number"
+                  placeholder="e.g. +91 9876543210 or +1 415 5552671"
                   value={formData.mobile_no}
                   onChange={handleChange}
                   className={`form-control ${errors.mobile_no ? 'is-invalid' : ''}`}

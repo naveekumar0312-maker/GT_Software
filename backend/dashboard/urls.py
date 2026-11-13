@@ -6,6 +6,7 @@ from .views import (
     DashboardPaymentSummaryView,
     DashboardRecentReportsView,
     DashboardUpcomingToursView,
+    DashboardTripRemindersView,
 )
 
 urlpatterns = [
@@ -15,4 +16,5 @@ urlpatterns = [
     path('payment-summary/', DashboardPaymentSummaryView.as_view(), name='dashboard-payment-summary'),
     path('recent-reports/', DashboardRecentReportsView.as_view(), name='dashboard-recent-reports'),
     path('upcoming-tours/', DashboardUpcomingToursView.as_view(), name='dashboard-upcoming-tours'),
+    path('trip-reminders/', DashboardTripRemindersView.as_view(), name='dashboard-trip-reminders'),
 ]

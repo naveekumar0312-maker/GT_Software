@@ -466,3 +466,79 @@ class DashboardUpcomingToursView(APIView):
             'success': True,
             'upcoming_tours': tours[:limit]
         })
+
+
+class DashboardTripRemindersView(APIView):
+    """
+    GET /api/dashboard/trip-reminders/
+    Returns reminders for Final Reports where the trip end date (travel_date + duration - 1)
+    is ending today or recently completed (within the last 3 days) or ending within the next 2 days.
+    """
+    def get(self, request):
+        today = timezone.localdate()
+        reminders = []
+
+        # Fetch recent or active final reports
+        # Look back up to 60 days of travel_date to catch any tour whose end date is around today
+        earliest_travel = today - datetime.timedelta(days=60)
+        reports = FinalReport.objects.filter(travel_date__gte=earliest_travel).order_by('-travel_date')
+
+        for fr in reports:
+            if not fr.travel_date:
+                continue
+            dur = max(1, fr.duration or 1)
+            # Trip End Date = travel_date + (duration - 1) days
+            end_date = fr.travel_date + datetime.timedelta(days=dur - 1)
+            diff_days = (end_date - today).days
+
+            # We trigger reminders if:
+            # diff_days == 0 (Trip ends Today!)
+            # diff_days == 1 (Trip ends Tomorrow)
+            # diff_days == -1 (Trip ended Yesterday - Follow up)
+            # diff_days in [-3..2] (Active window for tour end follow-up)
+            if -3 <= diff_days <= 2:
+                status_label = 'Ending Today'
+                badge_type = 'warning'
+                if diff_days == 0:
+                    status_label = 'Trip Ends Today'
+                    badge_type = 'alert'
+                elif diff_days == 1:
+                    status_label = 'Ending Tomorrow'
+                    badge_type = 'upcoming'
+                elif diff_days == 2:
+                    status_label = 'Ending in 2 Days'
+                    badge_type = 'upcoming'
+                elif diff_days == -1:
+                    status_label = 'Ended Yesterday'
+                    badge_type = 'completed'
+                else:
+                    status_label = f'Ended {abs(diff_days)} Days Ago'
+                    badge_type = 'completed'
+
+                reminders.append({
+                    'id': fr.id,
+                    'crm_id': fr.crm_id,
+                    'guest_name': fr.guest_name,
+                    'mobile_no': fr.mobile_no,
+                    'destination': fr.destination,
+                    'branch': fr.branch,
+                    'sales_by': fr.sales_by,
+                    'travel_date': str(fr.travel_date),
+                    'duration': dur,
+                    'end_date': str(end_date),
+                    'diff_days': diff_days,
+                    'status_label': status_label,
+                    'badge_type': badge_type,
+                    'total_cost': float(fr.total_cost or 0),
+                    'net_profit': float(fr.net_profit or 0),
+                })
+
+        # Sort so that today's reminders come first, followed by yesterday/tomorrow
+        reminders.sort(key=lambda r: abs(r['diff_days']))
+
+        return Response({
+            'success': True,
+            'today': str(today),
+            'count': len(reminders),
+            'reminders': reminders
+        })

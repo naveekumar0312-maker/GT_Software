@@ -29,8 +29,8 @@ class FinalReport(models.Model):
     ]
 
     phone_regex = RegexValidator(
-        regex=r'^[6-9]\d{9}$',
-        message="Mobile number must be a valid 10-digit Indian number starting with 6, 7, 8, or 9."
+        regex=r'^\+?[0-9\s\-()]{7,25}$',
+        message="Enter a valid mobile number with optional country code (7 to 20 digits)."
     )
 
     # Reference to original First Report
@@ -76,9 +76,9 @@ class FinalReport(models.Model):
         help_text="Primary Guest Name"
     )
     mobile_no = models.CharField(
-        max_length=15,
+        max_length=30,
         validators=[phone_regex],
-        help_text="10-digit Mobile Number"
+        help_text="Mobile Number (supports international country codes)"
     )
     dob = models.DateField(
         null=True,

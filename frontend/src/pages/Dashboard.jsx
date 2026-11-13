@@ -17,7 +17,12 @@ import {
   Building,
   Globe,
   Wallet,
-  Eye
+  Eye,
+  Bell,
+  X,
+  MapPin,
+  Phone,
+  User
 } from 'lucide-react';
 import {
   ResponsiveContainer,
@@ -35,7 +40,8 @@ import {
   getReportStatusOverview,
   getPaymentSummary,
   getRecentReports,
-  getUpcomingTours
+  getUpcomingTours,
+  getTripReminders
 } from '../services/dashboardApi';
 import CustomDropdown from '../components/CustomDropdown';
 import '../styles/Dashboard.css';
@@ -82,6 +88,11 @@ export default function Dashboard() {
   const [upcomingTours, setUpcomingTours] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
 
+  // Trip Reminders Popup State
+  const [tripReminders, setTripReminders] = useState([]);
+  const [showReminderModal, setShowReminderModal] = useState(false);
+  const [hasDismissedModal, setHasDismissedModal] = useState(false);
+
   // Fetch all dashboard data using current filters
   const fetchDashboardData = useCallback(async (isRefresh = false) => {
     if (isRefresh) {
@@ -109,14 +120,16 @@ export default function Dashboard() {
         statusRes,
         paymentRes,
         recentRes,
-        upcomingRes
+        upcomingRes,
+        remindersRes
       ] = await Promise.all([
         getDashboardOverview(params),
         getFinancialChartData(params),
         getReportStatusOverview(params),
         getPaymentSummary(params),
         getRecentReports(params),
-        getUpcomingTours(params)
+        getUpcomingTours(params),
+        getTripReminders().catch(() => ({ data: { reminders: [] } }))
       ]);
 
       setOverview(overviewRes.data);
@@ -131,6 +144,12 @@ export default function Dashboard() {
       });
       
       setUpcomingTours(upcomingRes.data?.upcoming_tours || []);
+
+      const remList = remindersRes.data?.reminders || [];
+      setTripReminders(remList);
+      if (remList.length > 0 && !hasDismissedModal) {
+        setShowReminderModal(true);
+      }
     } catch (err) {
       console.error('Error fetching dashboard data:', err);
       setErrorMessage('Failed to load dashboard metrics. Please verify database connection or retry.');
@@ -161,9 +180,23 @@ export default function Dashboard() {
             <h1>Dashboard</h1>
             <p className="dashboard-subtitle">Welcome to CRM – Business Performance Overview</p>
           </div>
-          <div className="dashboard-date-badge">
-            <Calendar size={16} />
-            <span>{todayFormatted}</span>
+          <div className="dashboard-header-right-actions" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            {tripReminders.length > 0 && (
+              <button
+                type="button"
+                className="dashboard-reminder-bell-btn"
+                onClick={() => setShowReminderModal(true)}
+                title="View Trip End Reminders"
+              >
+                <Bell size={16} />
+                <span>Trip Reminders</span>
+                <span className="reminder-counter-badge">{tripReminders.length}</span>
+              </button>
+            )}
+            <div className="dashboard-date-badge">
+              <Calendar size={16} />
+              <span>{todayFormatted}</span>
+            </div>
           </div>
         </div>
 
@@ -900,6 +933,116 @@ export default function Dashboard() {
           </table>
         </div>
       </div>
+
+      {/* TRIP END REMINDERS MODAL POPUP */}
+      {showReminderModal && (
+        <div className="reminder-modal-overlay" onClick={() => { setShowReminderModal(false); setHasDismissedModal(true); }}>
+          <div className="reminder-modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="reminder-modal-header">
+              <div className="reminder-modal-title-area">
+                <div className="reminder-modal-icon-badge">
+                  <Bell size={20} />
+                </div>
+                <div>
+                  <h3 className="reminder-modal-title">Tour End Reminders</h3>
+                  <p className="reminder-modal-subtitle">
+                    Completed Final Reports – Trips concluding today or requiring guest follow-up
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                className="reminder-modal-close-btn"
+                onClick={() => { setShowReminderModal(false); setHasDismissedModal(true); }}
+                title="Close"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <div className="reminder-modal-body">
+              {tripReminders.length === 0 ? (
+                <div className="reminder-empty-state">
+                  <CheckCircle2 size={36} color="#10B981" />
+                  <p>No trips ending today or pending follow-up.</p>
+                </div>
+              ) : (
+                <div className="reminder-cards-list">
+                  {tripReminders.map((rem) => (
+                    <div key={rem.id} className={`reminder-item-card status-${rem.badge_type}`}>
+                      <div className="reminder-item-top">
+                        <div className="reminder-item-crm">
+                          <span className="crm-badge">CRM #{rem.crm_id}</span>
+                          <span className={`reminder-status-pill badge-${rem.badge_type}`}>
+                            {rem.status_label}
+                          </span>
+                        </div>
+                        <span className="reminder-item-branch">{rem.branch} Branch</span>
+                      </div>
+
+                      <div className="reminder-item-main">
+                        <div className="reminder-guest-name">
+                          <User size={15} style={{ marginRight: 6, color: '#3B82F6' }} />
+                          <strong>{rem.guest_name}</strong>
+                        </div>
+                        <div className="reminder-item-dest">
+                          <MapPin size={15} style={{ marginRight: 6, color: '#EF4444' }} />
+                          <span>{rem.destination} ({rem.duration} Days)</span>
+                        </div>
+                      </div>
+
+                      <div className="reminder-item-dates">
+                        <div className="reminder-date-col">
+                          <span className="reminder-date-lbl">Start Date</span>
+                          <span className="reminder-date-val">{formatDate(rem.travel_date)}</span>
+                        </div>
+                        <div className="reminder-date-col highlight">
+                          <span className="reminder-date-lbl">Trip End Date</span>
+                          <span className="reminder-date-val">{formatDate(rem.end_date)}</span>
+                        </div>
+                        {rem.mobile_no && (
+                          <div className="reminder-date-col">
+                            <span className="reminder-date-lbl">Contact</span>
+                            <a href={`tel:${rem.mobile_no}`} className="reminder-phone-link">
+                              <Phone size={13} style={{ marginRight: 4 }} />
+                              {rem.mobile_no}
+                            </a>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="reminder-item-actions">
+                        <span className="reminder-sales-tag">Executive: {rem.sales_by || 'Staff'}</span>
+                        <Link
+                          to={`/final-report/${rem.id}/view`}
+                          className="reminder-view-link"
+                          onClick={() => setShowReminderModal(false)}
+                        >
+                          <Eye size={14} style={{ marginRight: 5 }} />
+                          <span>View Final Report</span>
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="reminder-modal-footer">
+              <span className="reminder-count-summary">
+                Showing <strong>{tripReminders.length}</strong> active trip notification{tripReminders.length === 1 ? '' : 's'}
+              </span>
+              <button
+                type="button"
+                className="reminder-modal-done-btn"
+                onClick={() => { setShowReminderModal(false); setHasDismissedModal(true); }}
+              >
+                Got It
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

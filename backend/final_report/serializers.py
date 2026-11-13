@@ -264,15 +264,17 @@ class FinalReportSerializer(serializers.ModelSerializer):
         return cleaned_value
 
     def validate_mobile_no(self, value):
-        cleaned_value = re.sub(r'[\s\-+]', '', str(value))
-        if cleaned_value.startswith('91') and len(cleaned_value) == 12:
-            cleaned_value = cleaned_value[2:]
-
-        if not re.match(r'^[6-9]\d{9}$', cleaned_value):
+        val = str(value).strip()
+        digits_only = re.sub(r'\D', '', val)
+        if len(digits_only) < 7 or len(digits_only) > 16:
             raise serializers.ValidationError(
-                "Mobile number must be a valid 10-digit Indian number starting with 6, 7, 8, or 9."
+                "Mobile number must contain between 7 and 16 digits (country code optional e.g. +91, +1, +44, +971)."
             )
-        return cleaned_value
+        if not re.match(r'^\+?[0-9\s\-()]+$', val):
+            raise serializers.ValidationError(
+                "Mobile number contains invalid characters."
+            )
+        return val
 
     def validate_email_id(self, value):
         if not value:

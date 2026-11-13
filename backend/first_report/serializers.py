@@ -182,18 +182,17 @@ class FirstReportSerializer(serializers.ModelSerializer):
         return val
 
     def validate_mobile_no(self, value):
-        val = str(value).strip().replace(" ", "").replace("-", "")
-        # Remove +91 prefix if present
-        if val.startswith("+91"):
-            val = val[3:]
-        elif val.startswith("91") and len(val) == 12:
-            val = val[2:]
-        elif val.startswith("0") and len(val) == 11:
-            val = val[1:]
-
-        if not re.match(r'^[6-9]\d{9}$', val):
+        val = str(value).strip()
+        # Extract digits to check minimal length for international numbers
+        digits_only = re.sub(r'\D', '', val)
+        if len(digits_only) < 7 or len(digits_only) > 16:
             raise serializers.ValidationError(
-                "Please enter a valid 10-digit Indian mobile number starting with 6, 7, 8, or 9."
+                "Please enter a valid mobile number (7 to 16 digits, country code optional e.g. +91, +1, +44, +971)."
+            )
+        # Ensure it only contains allowed phone characters: +, digits, spaces, hyphens, brackets
+        if not re.match(r'^\+?[0-9\s\-()]+$', val):
+            raise serializers.ValidationError(
+                "Mobile number contains invalid characters."
             )
         return val
 
